@@ -2,7 +2,7 @@
 
 This project is an Angular implementations of the Thinkster 'Real World' front end 'Conduit' which is a Medium clone.
 
-This implementation is hosted here (TODO)
+This implementation is hosted here (https://mattr.z19.web.core.windows.net)
 
 The project is Angular style guide and best practice compliant and, as far as I can see, correctly implements the functionality of the 'Conduit' front end.
 

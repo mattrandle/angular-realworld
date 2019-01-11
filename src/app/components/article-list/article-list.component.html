@@ -1,0 +1,11 @@
+<app-article-preview *ngFor="let article of articles" [article]=article></app-article-preview>
+
+<nav aria-label="Page navigation example" *ngIf="!isLoading">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="!hasPreviousPage()"><a class="page-link" (click)="goPreviousPage()"><span aria-hidden="true">&laquo;</span></a></li>              
+      <li class="page-item"><span class="page-link">{{ currentPage }} of {{ pageCount() }}</span></li>
+      <li class="page-item" [class.disabled]="!hasNextPage()"><a class="page-link" (click)="goNextPage()"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+</nav>
+
+<p *ngIf="isLoading">Please wait... loading articles</p>

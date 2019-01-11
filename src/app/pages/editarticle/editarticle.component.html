@@ -1,0 +1,31 @@
+<div class="editor-page" v-if="article">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 col-xs-12">
+        <ul class="error-messages" *ngIf="errors.length > 0">
+          <li *ngFor="let error of errors">{{ error }}</li>
+        </ul> 
+
+        <form #editArticleForm="ngForm">
+          <fieldset>
+            <fieldset class="form-group">
+                <input type="text" class="form-control form-control-lg" name="title" placeholder="Article Title" [(ngModel)]="article.title">
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="text" class="form-control" name="description" placeholder="What's this article about?" [(ngModel)]="article.description">
+            </fieldset>
+            <fieldset class="form-group">
+                <textarea class="form-control" rows="8" name="body" placeholder="Write your article (in markdown)" [(ngModel)]="article.body"></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="text" class="form-control" name="tagList" placeholder="Enter tags" [(ngModel)]="tagList"><div class="tag-list"></div>
+            </fieldset>
+            <button class="btn btn-lg pull-xs-right btn-primary" type="button" (click)="saveChanges()">
+                {{ article.slug ? "Update Article" : "Publish Article" }}
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

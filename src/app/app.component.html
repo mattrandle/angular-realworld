@@ -1,0 +1,52 @@
+<nav class="navbar navbar-light">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">conduit</a>
+        <ul class="nav navbar-nav pull-xs-right" >
+
+            <li class="nav-item">            
+                <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            </li>  
+
+            <ng-container *showIfAuthenticated="false">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Sign In</a>
+                </li>           
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/register" routerLinkActive="active">Sign Up</a>
+                </li>        
+            </ng-container>
+
+            <ng-container *showIfAuthenticated="true">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/editor" routerLinkActive="active">
+                        <i class="ion-compose"></i>&nbsp;New Post
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/settings" routerLinkActive="active">
+                        <i class="ion-gear-a"></i>&nbsp;Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/profile', authService.getAuthenticatedUser().username]" routerLinkActive="active">
+                        {{ (authService.authenticatedUser | async).username }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="signOut()">Sign Out</a>
+                </li>
+            </ng-container>
+        </ul> 
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer>
+    <div class="container">
+        <a href="/" class="logo-font">conduit</a>
+        <span class="attribution">
+        An interactive learning project from <a href="https://thinkster.io">Thinkster</a>. Code &amp; design licensed under MIT.
+        </span>
+    </div>
+</footer>

@@ -1,0 +1,33 @@
+<div class="auth-page">
+  <div class="container page">
+      <div class="row">
+
+      <div class="col-md-6 offset-md-3 col-xs-12">
+          <h1 class="text-xs-center">Sign up</h1>
+          <p class="text-xs-center">
+          <a routerLink="\login">Have an account?</a>
+          </p>
+
+          <ul class="error-messages" *ngIf="errors.length > 0">
+            <li *ngFor="let error of errors">{{ error }}</li>
+          </ul> 
+
+          <form #registerForm="ngForm">
+              <fieldset class="form-group" >
+                  <input class="form-control form-control-lg" type="text" placeholder="Your Name" id="register-username" name="register-username" [(ngModel)]="username" [readonly]="registerInProgress">
+              </fieldset>
+              <fieldset class="form-group">
+                  <input class="form-control form-control-lg" type="text" placeholder="Email" id="register-email" name="register-email" [(ngModel)]="email" [readonly]="registerInProgress">
+              </fieldset>
+              <fieldset class="form-group">
+                  <input class="form-control form-control-lg" type="password" placeholder="Password" id="register-password" name="register-password" [(ngModel)]="password" [readonly]="registerInProgress">
+              </fieldset>
+              <button class="btn btn-lg btn-primary pull-xs-right" (click)="signUp()" [disabled]="registerInProgress">
+                  Sign up
+              </button>
+          </form>
+      </div>
+
+      </div>
+  </div>
+</div>

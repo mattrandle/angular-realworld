@@ -1,0 +1,87 @@
+<ng-template #editDeleteButtons>
+  <a class="btn btn-outline-secondary btn-sm" [routerLink]="['/editor', article.slug]">
+      <i class="ion-edit"></i> Edit Article
+  </a>
+  &nbsp;&nbsp;
+  <button class="btn btn-outline-danger btn-sm" (click)="deleteArticle()">
+      <i class="ion-trash-a"></i> Delete Article
+  </button>
+</ng-template>
+     
+<ng-template #followUnfollowButtons>
+  <button class="btn btn-sm btn-outline-secondary" (click)="toggleFollowAuthor()">
+      <i [ngClass]="getButtonIconClass()"></i>
+      &nbsp;
+      {{ this.article.author.following ? 'Unfollow ' : 'Follow ' }}{{ article.author.username }} 
+  </button>
+  &nbsp;&nbsp;
+  <button class="btn btn-sm" (click)="toggleFavoritedArticle()" [ngClass]="favoriteClass()">
+      <i class="ion-heart"></i>
+      &nbsp;
+      {{ this.article.favorited ? 'Unfavorite Post' : 'Favorite Post' }} <span class="counter">({{article.favoritesCount}})</span>
+  </button>
+</ng-template>
+
+<div class="article-page">
+
+    <div class="banner">
+      <div class="container">
+        <h1>{{ article.title }}</h1>     
+        <app-article-meta [article]="article">
+          <ng-container *ngTemplateOutlet="isOwnArticle() ? editDeleteButtons : followUnfollowButtons"></ng-container>
+        </app-article-meta>
+      </div>
+    </div>
+
+    <div class="container page">
+
+      <div class="row article-content">
+        <div class="col-md-12" [innerHTML]="article.body">        
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="article-actions">
+        <app-article-meta [article]="article">
+          <ng-container *ngTemplateOutlet="isOwnArticle() ? editDeleteButtons : followUnfollowButtons"></ng-container>
+        </app-article-meta>
+      </div>
+
+      <div class="row"> 
+
+        <div class="col-xs-12 col-md-8 offset-md-2">
+
+          <form class="card comment-form" #commentForm="ngForm">
+            <div class="card-block">
+              <textarea class="form-control" placeholder="Write a comment..." rows="3" [(ngModel)]="commentBody" name="commentBody">
+              </textarea>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-sm btn-primary" (click)="postComment()">
+                Post Comment
+              </button>
+            </div>
+          </form>
+          
+          <div class="card" *ngFor="let comment of articleComments">
+            <div class="card-block">
+              <p class="card-text">{{comment.body}}</p>
+            </div>
+            <div class="card-footer">
+              <a href="" class="comment-author">
+                <img [src]="comment.author.image" class="comment-author-img" />
+              </a>
+              &nbsp;
+              <a href="" class="comment-author">{{ comment.author.username }}</a>
+              <span class="date-posted">{{ comment.updatedAt }}</span>
+              <span class="mod-options" *ngIf="isOwnComment(comment.author.username)"><i class="ion-trash-a" (click)="deleteComment(comment.id)"></i></span>
+            </div>
+          </div>       
+          
+        </div>
+
+      </div>
+
+    </div>
+  </div>    

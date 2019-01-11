@@ -1,0 +1,12 @@
+<div class="article-preview">
+  <app-article-meta [article]="article">
+    <button class="btn btn-outline-primary btn-sm pull-xs-right" (click)="toggleFavoritedArticle()" [ngClass]="favoriteClass()">
+      <i class="ion-heart"></i> {{ article.favoritesCount }}
+    </button>
+  </app-article-meta>
+  <a class="preview-link" [routerLink]="['/articles', article.slug]">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.description }}</p>
+    <span>Read more...</span>
+  </a>
+</div>

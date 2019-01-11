@@ -1,0 +1,42 @@
+<div class="home-page">
+
+  <div class="banner">
+    <div class="container">
+      <h1 class="logo-font">conduit</h1>
+      <p>A place to share your knowledge.</p>
+    </div>
+  </div>
+
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-9">
+        <div class="feed-toggle">
+          <ul class="nav nav-pills outline-active">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/my-feed" routerLinkActive="active" *showIfAuthenticated="true">Your Feed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Global Feed</a>
+            </li>
+            <li class="nav-item" *ngIf="selectedTag">
+              <a class="nav-link" [routerLink]="['/tag', selectedTag]" routerLinkActive="active">#{{selectedTag}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <router-outlet></router-outlet>
+      </div>
+
+      <div class="col-md-3">
+        <div class="sidebar">
+          <p>Popular Tags</p>
+
+          <div class="tag-list">
+            <a class="tag-pill tag-default" *ngFor="let tag of tags" (click)="setSelectedTag(tag)">{{tag}}</a>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>

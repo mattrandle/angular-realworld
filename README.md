@@ -6,7 +6,7 @@ The project is hosted here - https://mattr.z19.web.core.windows.net
 
 The project is Angular style guide and best practice compliant and, as far as I can see, correctly implements the functionality of the 'Conduit' front end.
 
-Although building Conduit doesn't quite require you use the vast totality of Angular functionality, it does excercise most of the key concepts you need to understand to build a production Angular application including,
+Although building Conduit doesn't quite require you to exercise the vast totality of Angular functionality, it does need most of the key features you need to understand to build a production Angular application including,
 
 1. Reusable components
 2. Routing included child routes, route guards 

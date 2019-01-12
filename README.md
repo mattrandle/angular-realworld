@@ -1,4 +1,4 @@
-![](https://img.shields.io/david/mattrandle/angular-realworld.svg) ![](https://img.shields.io/azure-devops/build/mattrandle/realworld-angular/5/master.svg)
+![](https://img.shields.io/david/mattrandle/angular-realworld.svg) ![](https://img.shields.io/azure-devops/build/mattrandle/realworld-angular/3/master.svg)
 
 # Angular 7 Real World implementation 
 
